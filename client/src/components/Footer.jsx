@@ -117,7 +117,7 @@ const Footer = () => {
 
           {/* Legal Links */}
           <div className="flex items-center gap-4 text-gray-500">
-            <Link to="/privacy" className="hover:text-primary transition-colors">
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors">
               Privacy Policy
             </Link>
             <Link to="/terms" className="hover:text-primary transition-colors">

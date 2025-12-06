@@ -25,6 +25,8 @@ import BottomNavbar from "./components/BottomNavbar";
 import Events from "./pages/Events";
 import WhatsAppChatWidget from "./components/WhatsAppChatWidget ";
 import SideNavigationMenu from "./components/SideNavigationMenu ";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfServices from "./pages/TermsOfServices";
 
 const App = () => {
   const location = useLocation();
@@ -61,6 +63,8 @@ const App = () => {
           <Route path="/my-orders" element={<MyOrders />} />
           <Route path="/contact-us" element={<ContactUs/>}/>
           <Route path="/faq" element={<FAQPage/>}/>
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfServices />} />
           <Route path="/events" element={<Events />} />
           <Route
             path="/seller"

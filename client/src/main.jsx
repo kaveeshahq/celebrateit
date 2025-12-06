@@ -20,6 +20,8 @@ import ContactUs from "./pages/ContactUs.jsx";
 import FAQPage from "./pages/FAQPage.jsx";
 import { HelmetProvider } from 'react-helmet-async'
 import Events from "./pages/Events.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import TermsOfServices from "./pages/TermsOfServices.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,8 @@ const router = createBrowserRouter([
       { path: "contact-us" , element: <ContactUs/> },
       { path: "faq" , element: <FAQPage/> },
       { path: "events" , element: <Events/> },
+      { path: "privacy-policy" , element: <PrivacyPolicy/> },
+      { path: "terms" , element: <TermsOfServices/> },
 
       {
         path: "seller",
