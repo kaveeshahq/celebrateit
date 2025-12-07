@@ -84,7 +84,11 @@ import hamper_image from "./hampers.jpg"
 import gift_image from "./gifts.jpg"
 import banner_2_new from "./banner_2_new.png"
 import banner_3 from "./banner_3.png"
-
+import category_banner_flowers from "./category_banner_flowers.png"
+import category_banner_choco from "./category_banner_choco.png"
+import category_banner_cakes from "./category_banner_cakes.png"
+import category_banner_gifts from "./category_banner_gifts.png"
+import events from "./events.png";
 export const assets = {
   logo,
   search_icon,
@@ -128,6 +132,11 @@ export const assets = {
   gift_image,
   banner_2_new,
   banner_3,
+  category_banner_flowers,
+  category_banner_choco,
+  category_banner_cakes,
+  category_banner_gifts,
+  events,
 };
 
 export const categories = [

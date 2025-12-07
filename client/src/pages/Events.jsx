@@ -15,6 +15,7 @@ import {
   Camera,
   Users
 } from "lucide-react";
+import { assets } from "../assets/assets";
 
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -105,12 +106,12 @@ const Events = () => {
       <div className="relative mt-4 h-[400px] md:h-[200px] lg:h-[400px] rounded-2xl md:rounded-3xl overflow-hidden mb-12 shadow-2xl">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1600&q=80"
+            src={assets.events}
             alt="Events by Celebrateit"
             className="w-full h-full object-cover"
           />
           {/* <div className="absolute inset-0 bg-gradient-to-r from-primary-pink/80 via-primary-purple/80 to-primary/80"></div> */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent"></div>
         </div>
 
         <div className="relative h-full flex flex-col justify-center items-center text-center px-6 md:px-10">

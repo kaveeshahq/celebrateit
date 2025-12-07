@@ -1,5 +1,6 @@
 import React from "react";
 import { Flower2, Cake, Gift, Candy, Package, Mail, Store } from "lucide-react";
+import { assets } from "../assets/assets";
 
 const CategoryBanner = ({ category, image }) => {
   // Normalize the category string to match with config keys
@@ -13,32 +14,33 @@ const CategoryBanner = ({ category, image }) => {
       subtitle: "Fresh & Beautiful Blooms",
       description: "Express your emotions with our stunning collection of fresh flowers",
       icon: Flower2,
-      gradient: "from-pink-500 to-rose-600",
-      image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200&q=80"
+      gradient: "from-pink-300 to-rose-300",
+      image: assets.category_banner_flowers
+
     },
     "cakeandbakes": {
       title: "Cake & Bakes",
       subtitle: "Delicious Treats & Desserts",
       description: "Celebrate special moments with our freshly baked cakes and pastries",
       icon: Cake,
-      gradient: "from-orange-500 to-amber-600",
-      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1200&q=80"
+      // gradient: "from-orange-500 to-amber-600",
+      image: assets.category_banner_cakes
     },
     gifts: {
       title: "Gifts",
       subtitle: "Thoughtful Gift Ideas",
       description: "Find the perfect gift for your loved ones from our curated collection",
       icon: Gift,
-      gradient: "from-purple-500 to-indigo-600",
-      image: "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=1200&q=80"
+      // gradient: "from-purple-500 to-indigo-600",
+      image: assets.category_banner_gifts
     },
     "chocolatessweets": {
       title: "Chocolates & Sweets",
       subtitle: "Premium Confectionery",
       description: "Indulge in our delectable selection of chocolates and sweets",
       icon: Candy,
-      gradient: "from-brown-500 to-yellow-700",
-      image: "https://images.unsplash.com/photo-1511381939415-e44015466834?w=1200&q=80"
+      // gradient: "from-brown-500 to-yellow-700",
+      image: assets.category_banner_choco
     },
     hampers: {
       title: "Hampers",
