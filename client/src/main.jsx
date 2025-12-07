@@ -22,6 +22,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import Events from "./pages/Events.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import TermsOfServices from "./pages/TermsOfServices.jsx";
+import HotDeals from "./pages/HotDeals.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
       { path: "events" , element: <Events/> },
       { path: "privacy-policy" , element: <PrivacyPolicy/> },
       { path: "terms" , element: <TermsOfServices/> },
-
+      { path: "hot-deals" , element: <HotDeals/> },
       {
         path: "seller",
         element: <SellerLayout />,

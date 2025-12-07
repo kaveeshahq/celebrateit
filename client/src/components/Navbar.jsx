@@ -120,43 +120,47 @@ const Navbar = () => {
           </button>
 
           {/* User Menu */}
-          {!user ? (
-            <button
-              onClick={() => setShowUserLogin(true)}
-              className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-primary to-primary-purple text-white rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all duration-300"
-            >
-              <LogIn size={18} />
-              <span>Login</span>
-            </button>
-          ) : (
-            <div className="relative group">
-              <button className="flex items-center gap-2 px-4 py-2.5 hover:bg-gray-100 rounded-full transition-all">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-purple rounded-full flex items-center justify-center text-white font-semibold text-sm">
-                  {user.name?.charAt(0).toUpperCase() || 'U'}
-                </div>
-                <span className="font-medium text-gray-700">{user.name?.split(' ')[0]}</span>
-                <ChevronDown size={16} className="text-gray-500" />
-              </button>
-              
-              <div className="hidden group-hover:block absolute top-full right-0 mt-2 w-48 bg-white shadow-xl border border-gray-100 rounded-xl py-2 z-50">
-                <button
-                  onClick={() => navigate("/my-orders")}
-                  className="w-full text-left px-4 py-2.5 text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <ShoppingCart size={16} />
-                  <span>My Orders</span>
-                </button>
-                <hr className="my-1 border-gray-100" />
-                <button
-                  onClick={logout}
-                  className="w-full text-left px-4 py-2.5 text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2"
-                >
-                  <LogIn size={16} className="rotate-180" />
-                  <span>Logout</span>
-                </button>
-              </div>
-            </div>
-          )}
+{/* User Menu */}
+{!user ? (
+  <button
+    onClick={() => setShowUserLogin(true)}
+    className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-primary to-primary-purple text-white rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all duration-300"
+  >
+    <LogIn size={18} />
+    <span>Login</span>
+  </button>
+) : (
+  <div className="relative group">
+    <button className="flex items-center gap-2 px-4 py-2.5 hover:bg-gray-100 rounded-full transition-all">
+      <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-purple rounded-full flex items-center justify-center text-white font-semibold text-sm">
+        {user.name?.charAt(0).toUpperCase() || 'U'}
+      </div>
+      <span className="font-medium text-gray-700">{user.name?.split(' ')[0]}</span>
+      <ChevronDown size={16} className="text-gray-500" />
+    </button>
+    
+    {/* Fixed dropdown - removed gap */}
+    <div className="hidden group-hover:block absolute top-full right-0 pt-2 z-50">
+      <div className="bg-white shadow-xl border border-gray-100 rounded-xl py-2 w-48">
+        <button
+          onClick={() => navigate("/my-orders")}
+          className="w-full text-left px-4 py-2.5 cursor-pointer text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors flex items-center gap-2"
+        >
+          <ShoppingCart size={16} />
+          <span>My Orders</span>
+        </button>
+        <hr className="my-1 border-gray-100" />
+        <button
+          onClick={logout}
+          className="w-full text-left px-4 py-2.5 text-red-600 hover:bg-red-50  cursor-pointer transition-colors flex items-center gap-2"
+        >
+          <LogIn size={16} className="rotate-180" />
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </div>
+)}
         </div>
 
         {/* Mobile Actions */}

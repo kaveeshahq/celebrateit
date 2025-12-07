@@ -26,10 +26,10 @@ const SideNavigationMenu = () => {
       hasSubmenu: true,
       submenu: [
         { name: "Flowers", path: "/products/flowers" },
-        { name: "Cake & Bakes", path: "/products/cake%20and%20bakes" },
+        { name: "Cake & Bakes", path: "/products/cakes" },
         { name: "Gifts", path: "/products/gifts" },
-        { name: "Chocolates & Sweets", path: "/products/chocolates%20%26%20sweets" },
-        { name: "Events", path: "/events" },
+        { name: "Chocolates & Sweets", path: "/products/chocolates" },
+        { name: "Events", path: "/products/events" },
       ]
     },
     {
@@ -41,7 +41,6 @@ const SideNavigationMenu = () => {
   ];
 
   const handleLinkClick = (path) => {
-    // Handle anchor link for categories section
     if (path === "/#categories") {
       const categoriesSection = document.getElementById("categories");
       if (categoriesSection) {
@@ -65,7 +64,7 @@ const SideNavigationMenu = () => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Icon Button - Smaller on desktop, visible on mobile */}
+              {/* Icon Button */}
               <Link
                 to={item.path}
                 onClick={() => handleLinkClick(item.path)}
@@ -77,22 +76,22 @@ const SideNavigationMenu = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </Link>
 
-              {/* Expanded Menu on Hover - Only on desktop */}
+              {/* Expanded Menu on Hover */}
               {isHovered && (
-                <div className="hidden md:block absolute right-12 top-0 animate-slide-in-left">
-                  <div className="bg-white rounded-l-xl shadow-2xl border border-gray-100 overflow-hidden min-w-[200px]">
+                <div className="absolute right-10 md:right-12 top-0 animate-slide-in-left">
+                  <div className="bg-white rounded-l-xl shadow-2xl border border-gray-100 overflow-hidden min-w-[180px] md:min-w-[200px]">
                     {/* Main Item */}
                     <Link
                       to={item.path}
                       onClick={() => handleLinkClick(item.path)}
-                      className="flex items-center gap-3 px-5 py-4 hover:bg-gray-50 transition-colors border-b border-gray-100"
+                      className="flex items-center gap-3 px-4 md:px-5 py-3 md:py-4 hover:bg-gray-50 transition-colors border-b border-gray-100"
                     >
-                      <IconComponent size={20} className="text-primary-purple" />
+                      <IconComponent size={18} className="md:w-5 md:h-5 text-primary-purple" />
                       <div className="flex-1">
-                        <p className="font-semibold text-gray-800">{item.name}</p>
-                        <p className="text-xs text-gray-500">{item.description}</p>
+                        <p className="font-semibold text-gray-800 text-sm md:text-base">{item.name}</p>
+                        <p className="text-xs text-gray-500 hidden md:block">{item.description}</p>
                       </div>
-                      <ChevronRight size={16} className="text-gray-400" />
+                      <ChevronRight size={14} className="md:w-4 md:h-4 text-gray-400" />
                     </Link>
 
                     {/* Submenu if exists */}
@@ -103,10 +102,10 @@ const SideNavigationMenu = () => {
                             key={subIndex}
                             to={subItem.path}
                             onClick={() => handleLinkClick(subItem.path)}
-                            className="flex items-center gap-3 px-5 py-2.5 hover:bg-primary/5 transition-colors text-gray-700 hover:text-primary"
+                            className="flex items-center gap-3 px-4 md:px-5 py-2 md:py-2.5 hover:bg-primary/5 transition-colors text-gray-700 hover:text-primary"
                           >
                             <div className="w-2 h-2 rounded-full bg-primary/30"></div>
-                            <span className="text-sm">{subItem.name}</span>
+                            <span className="text-xs md:text-sm">{subItem.name}</span>
                           </Link>
                         ))}
                       </div>

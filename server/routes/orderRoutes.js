@@ -4,6 +4,8 @@ import {
   getAllOrders,
   getUserOrders,
   placeOrderCOD,
+  updateOrderStatus,
+   deleteOrder,
   placeOrderStripe,
 } from "../controllers/orderController.js";
 import authSeller from "../middlewares/authSeller.js";
@@ -14,6 +16,7 @@ orderRouter.post("/cod", authUser, placeOrderCOD);
 orderRouter.get("/user", authUser, getUserOrders);
 orderRouter.get("/seller", authSeller, getAllOrders);
 orderRouter.post("/stripe", authUser, placeOrderStripe);
-
+orderRouter.put("/status", authSeller, updateOrderStatus);
+orderRouter.delete("/delete", authSeller, deleteOrder);
 
 export default orderRouter;

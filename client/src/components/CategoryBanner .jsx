@@ -1,7 +1,7 @@
 import React from "react";
 import { Flower2, Cake, Gift, Candy, Package, Mail, Store } from "lucide-react";
 
-const CategoryBanner = ({ category }) => {
+const CategoryBanner = ({ category, image }) => {
   // Normalize the category string to match with config keys
   const normalizeCategory = (cat) => {
     return cat.toLowerCase().replace(/\s+/g, '').replace(/&/g, '');
@@ -13,7 +13,7 @@ const CategoryBanner = ({ category }) => {
       subtitle: "Fresh & Beautiful Blooms",
       description: "Express your emotions with our stunning collection of fresh flowers",
       icon: Flower2,
-      // gradient: "from-pink-500 to-rose-600",
+      gradient: "from-pink-500 to-rose-600",
       image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200&q=80"
     },
     "cakeandbakes": {
@@ -73,12 +73,15 @@ const CategoryBanner = ({ category }) => {
   const config = categoryConfig[normalizedKey] || categoryConfig.flowers;
   const IconComponent = config.icon;
   
+  // Use custom image prop if provided, otherwise use config image
+  const bannerImage = image || config.image;
+  
   return (
     <div className="relative w-full h-[280px] md:h-[340px] lg:h-[400px] rounded-2xl md:rounded-3xl overflow-hidden mb-8 shadow-xl">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src={config.image}
+          src={bannerImage}
           alt={config.title}
           className="w-full h-full object-cover"
         />

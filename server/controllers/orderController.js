@@ -200,3 +200,65 @@ export const getAllOrders = async (req, res) => {
     return res.json({ success: false, message: error.message });
   }
 };
+
+// Update Order Status : /api/order/status
+export const updateOrderStatus = async (req, res) => {
+  try {
+    const { orderId, status } = req.body;
+    
+    if (!orderId || !status) {
+      return res.json({ success: false, message: "Missing required fields" });
+    }
+
+    // Validate status
+    const validStatuses = [
+      "Order Placed",
+      "Processing",
+      "Shipped",
+      "Out for Delivery",
+      "Delivered",
+      "Cancelled"
+    ];
+
+    if (!validStatuses.includes(status)) {
+      return res.json({ success: false, message: "Invalid status" });
+    }
+
+    const order = await Order.findByIdAndUpdate(
+      orderId,
+      { status },
+      { new: true }
+    );
+
+    if (!order) {
+      return res.json({ success: false, message: "Order not found" });
+    }
+
+    res.json({ success: true, message: "Order status updated successfully", order });
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+// Delete Order : /api/order/delete
+export const deleteOrder = async (req, res) => {
+  try {
+    const { orderId } = req.body;
+    
+    if (!orderId) {
+      return res.json({ success: false, message: "Order ID is required" });
+    }
+
+    const order = await Order.findByIdAndDelete(orderId);
+
+    if (!order) {
+      return res.json({ success: false, message: "Order not found" });
+    }
+
+    res.json({ success: true, message: "Order deleted successfully" });
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+
