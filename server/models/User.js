@@ -14,14 +14,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  googleId: {
+    type: String,
+    unique: true,
+    sparse: true, // Allows null values while maintaining uniqueness for non-null values
+  },
   cartItems: {
     type: Object,
     default: {},
   },
 },{minimize: false});
 
-const User = mongoose.models.user  || mongoose.model("user" , userSchema);
+const User = mongoose.models.user || mongoose.model("user", userSchema);
 
 export default User;
-
-// Add a comment

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -13,6 +13,7 @@ export const AppContextProvider = ({ children }) => {
   const currency = import.meta.env.VITE_CURRENCY;
 
   const navigate = useNavigate();
+  const location = useLocation();
   const [user, setUser] = useState(null);
   const [isSeller, setIsSeller] = useState(false);
   const [showUserLogin, setShowUserLogin] = useState(false);
@@ -21,7 +22,6 @@ export const AppContextProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   // fetch user status , User Data and Cart Items
-
   const fetchUser = async () => {
     try {
       const { data } = await axios.get("/api/user/is-auth");
@@ -49,7 +49,7 @@ export const AppContextProvider = ({ children }) => {
     }
   };
 
-  // Function to fetch products (dummy data for now)
+  // Function to fetch products
   const fetchProducts = async () => {
     try {
       const { data } = await axios.get("/api/product/list");
@@ -118,6 +118,21 @@ export const AppContextProvider = ({ children }) => {
     return Math.floor(totalAmount * 100) / 100;
   };
 
+  // Check for Google OAuth error or success on page load
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const error = urlParams.get("error");
+
+    if (error === "auth_failed") {
+      toast.error("Google authentication failed. Please try again.");
+      // Remove error from URL
+      navigate(location.pathname, { replace: true });
+    } else if (error === "server_error") {
+      toast.error("Server error during authentication. Please try again.");
+      navigate(location.pathname, { replace: true });
+    }
+  }, [location.search]);
+
   useEffect(() => {
     fetchSeller();
     fetchProducts();
@@ -128,8 +143,8 @@ export const AppContextProvider = ({ children }) => {
   useEffect(() => {
     const updateCart = async () => {
       try {
-        const { data } = await axios.post("/api/cart/update", {cartItems});
-        if (!data.success){
+        const { data } = await axios.post("/api/cart/update", { cartItems });
+        if (!data.success) {
           toast.error(data.message);
         }
       } catch (error) {
@@ -163,7 +178,6 @@ export const AppContextProvider = ({ children }) => {
     getCartAmount,
     axios,
     fetchProducts,
-    
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

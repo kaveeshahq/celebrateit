@@ -93,6 +93,37 @@ export const login = async (req, res) => {
   }
 };
 
+// Google Auth Callback Handler : /api/user/google/callback
+export const googleAuthCallback = async (req, res) => {
+  try {
+    // User is available in req.user after passport authentication
+    const user = req.user;
+
+    if (!user) {
+      return res.redirect(`${process.env.FRONTEND_URL}/login?error=auth_failed`);
+    }
+
+    // Create JWT token
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    // Set cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
+    // Redirect to frontend
+    res.redirect(`${process.env.FRONTEND_URL}/`);
+  } catch (error) {
+    console.log(error.message);
+    res.redirect(`${process.env.FRONTEND_URL}/login?error=server_error`);
+  }
+};
+
 // Check Auth : /api/user/is-auth
 export const isAuth = async (req, res) => {
   try {

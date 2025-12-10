@@ -205,15 +205,15 @@ export const footerLinks = [
       { text: "Contact Us", url: "/contact-us" },
     ],
   },
-  {
-    title: "Follow Us",
-    links: [
-      { text: "Instagram", url: "https://www.instagram.com/celebrateit_with_us?igsh=MXZvbWxzN3R4dHFrZw==" },
-      { text: "TikTok", url: "tiktok.com/@celebrateit.lk?_t=8rJFvfbtgsT&_r=1" },
-      { text: "Facebook", url: "https://www.facebook.com/share/1FwkFKdTxQ/?mibextid=wwXIfr" },
-      { text: "YouTube", url: "https://www.youtube.com/@Celebrateitwithus" },
-    ],
-  },
+  // {
+  //   title: "Follow Us",
+  //   links: [
+  //     { text: "Instagram", url: "https://www.instagram.com/celebrateit_with_us?igsh=MXZvbWxzN3R4dHFrZw==" },
+  //     { text: "TikTok", url: "tiktok.com/@celebrateit.lk?_t=8rJFvfbtgsT&_r=1" },
+  //     { text: "Facebook", url: "https://www.facebook.com/share/1FwkFKdTxQ/?mibextid=wwXIfr" },
+  //     { text: "YouTube", url: "https://www.youtube.com/@Celebrateitwithus" },
+  //   ],
+  // },
     {
     title: "Our Categories",
     links: [

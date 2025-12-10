@@ -12,9 +12,10 @@ import addressRouter from "./routes/addressRoute.js";
 import orderRouter from "./routes/orderRoutes.js";
 import { stripeWebHooks } from "./controllers/orderController.js";
 import contactRouter from "./routes/contactRoute.js";
+import passport from "./configs/passport.js";
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 await connectDB();
 await connectCloudinary();
@@ -28,6 +29,9 @@ const allowedOrigins = [
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: allowedOrigins, credentials: true }));
+
+// Initialize Passport
+app.use(passport.initialize());
 
 // 2. normal routes
 app.get("/", (req, res) => res.send("API Working"));
